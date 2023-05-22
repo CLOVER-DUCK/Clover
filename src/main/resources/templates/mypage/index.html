@@ -12,7 +12,7 @@
 	<h2>메인</h2>
 
 	
-    <p th:if="${session.loginUserId != null}">
+    <p th:if="${session.loginEmail != null}">
   
         로그인한 사용자의 정보:
         <br>
@@ -21,7 +21,7 @@
         이메일: <span th:text="${session.loginEmail}"></span>
     </p>
  
-   	<div th:unless="${session.loginUserId != null}" class="row">
+   	<div th:unless="${session.loginEmail != null}" class="row">
 		<div class="col">
 			<button class="w-100 btn btn-dark btn-lg"
 				onclick="location.href='login.html'"
@@ -38,7 +38,7 @@
     </div>
  
     
-    <form th:if="${session.loginUserId != null}" action="/logout" method="get">
+    <form th:if="${session.loginEmail != null}" action="/logout" method="get">
         <button type="submit">로그아웃</button>
     </form>
 

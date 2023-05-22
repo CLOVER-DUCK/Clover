@@ -2,7 +2,7 @@ package loverduck.clover.entity;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
-import loverduck.clover.repository.UserDetailRepository;
+
 import loverduck.clover.repository.UsersRepository;
 import loverduck.clover.repository.WalletRepository;
 import loverduck.clover.service.UsersService;
@@ -24,8 +24,7 @@ class UsersTest {
     private UsersRepository usersRepository;
     @Autowired
     private WalletRepository walletRepository;
-    @Autowired
-    private UserDetailRepository userDetailRepository;
+
 
     @Autowired
     TestEntityManager testEntityManager;
@@ -82,15 +81,8 @@ class UsersTest {
         Users u = qFactory.selectFrom(QUsers.users)
                 .where(QUsers.users.userid.eq("test"))
                 .fetchOne();
-        UserDetail ud = UserDetail.builder()
-                .user(u)
-                .address("Seoul, Korea")
-                .detailAddress("testLocation")
-                .name("Testuser Kim")
-                .phone("010-0000-0000")
-                .postalCode("00000")
-                .build();
-        userDetailRepository.save(ud);
+       
+//        userRepository.save(u);
     }
     
     @Test
@@ -102,11 +94,11 @@ class UsersTest {
                 .email("jang@example.com")
                 .password("1234")
                 .nickname("jang")
-                .type(0)
+                .type(1)
                 .build();
+        usersRepository.save(users);
         
-        
-        
+        /*
         UserDetail ud = UserDetail.builder()
         		.phone("1111")
         		.address("선릉")
@@ -115,14 +107,13 @@ class UsersTest {
         
         Users dbUser = usersRepository.save(users);
 		
-     ud.setUser(dbUser); //부모의 key(id)참조 
-     userDetailRepository.save(ud);	
-		
+	     ud.setUser(dbUser); //부모의 key(id)참조 
+	     userDetailRepository.save(ud);	
+		*/
 		
 		//System.out.println(dbUser.getEmail()+" 패스워드 "+dbUser.getPassword()+" 유저아이디 "+dbUser.getUserid());
 		
 		
-        
        // userService.register(user, ud);
     }
 }

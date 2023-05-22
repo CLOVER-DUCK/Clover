@@ -47,6 +47,12 @@ public class FundingServiceImpl implements FundingService{
 	}
 
 	@Override
+	public Funding findById(Long id) {		
+		Funding fund = fundingRepository.findById(id).orElse(null);
+		return fund;
+	}
+	
+	@Override
 	public List<Funding> findByCompanyName(String name) {
 		List<Funding> funds = fundingRepository.findByCompanyName(name);
 		return funds;

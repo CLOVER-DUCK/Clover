@@ -4,6 +4,7 @@ import java.util.List;
 
 import loverduck.clover.entity.Funding;
 import loverduck.clover.entity.FundingReply;
+import loverduck.clover.entity.Wallet;
 
 public interface FundingService {
 	
@@ -21,6 +22,11 @@ public interface FundingService {
 	 * 펀딩 전체 목록 조회 
 	 */
 	List<Funding> fundingList();
+	
+	/**
+	 * 펀딩 아이디 조회
+	 */
+	Funding findById(Long id);
 	
 	/**
 	 * 펀딩 상세 조회 

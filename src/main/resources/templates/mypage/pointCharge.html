@@ -26,6 +26,38 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
+
+
+	//GET 방식의 AJAX 호출
+	/* $.ajax({
+	  url: "/pointCharge",
+	  type: "GET",
+	  success: function(data) {
+		  //현재 잔여 포인트 출력
+		  $("#nowPoint").text(data.walletAmount);
+		  
+		// 포인트 내역 상세 목록 출력
+		  var phDetailList = data.phDetailList;
+		  var html = "";
+		  for (var i = 0; i < phDetailList.length; i++) {
+		    var pointHistory = phDetailList[i];
+		    html += "<div class='row'>";
+		    html += "<div class='col-2' th:text='${#dates.format(" + pointHistory.date + ", \"M/d\")}'></div>";
+		    html += "<div class='col-8' th:text='${" + (pointHistory.type == 0 ? "'충전'" : "'사용'") + "}'></div>";
+		    html += "<div class='col-2' th:text='${" + pointHistory.amount + "}'></div>";
+		    html += "</div>";
+			
+		  }
+		  $("#pointHistoryList").html(html);
+	  },
+	  error: function() {
+	  }
+	}); */
+	
+	/////////////////////////////////////////////////////////////
+	/* 아임포트 결제 처리*/	
+
+
 	var IMP = window.IMP;
 	var code = "imp78536886"; //가맹점 식별코드
 	IMP.init(code);
@@ -55,8 +87,6 @@
         var funding_name = '파도, 인진에서 "파력 에너지"로 다시 태어나다';    
         var type = 0; //충전 0, 사용 1, 환전 2
         var currentTime = new Date();
-        
-        
 
 		IMP.request_pay({
 			pg : "html5_inicis", //pg사 구분코드 - 이니시스 웹표준
@@ -83,7 +113,7 @@
 				
 				//데이터 전송
 				$.ajax({					
-					url : "/mypage/pointCharge"+wallet_id,
+					url : "/mypage/pointCharge",
 					type : "POST",
 					dataType:"json",
 					data : {amount : rsp.paid_amount, 
@@ -100,13 +130,15 @@
 
 				        console.log("Amount: " + amount);
 				        console.log("Data: " + data);
+				        
+				        //locaiton.href="/mypage/pointChargeFin";
 				    },
 				    error: function(jqXHR, textStatus, errorThrown) {
 				        // 에러 처리를 하는 부분입니다.
 				        console.error("Request failed: " + textStatus, errorThrown);
 				    }
 					
-				});
+				}); //ajaxEnd
 				//window.location.href = rsp.next_redirect_pc_url; // 웹 페이지 이동
 
 			} else { //결제 실패시
@@ -120,26 +152,20 @@
 				alert("결제를 실패하였습니다.");
 			}
 		});
-	}
+	}//requestPay() End
 </script>
 
 <title>CLOVER | MYPAGE - 포인트 충전</title>
 <!-- 	마이페이지 - 투자자 (포인트 충전) -->
 </head>
 <body>
+
+
 	<div>
 		<div class="nav"></div>
 		<div class="banner"></div>
 
-		<div class="category">
-				<div th:if="${phDetail != null}">
-				    <h3>포인트 상세 내역</h3>
-				    <p>포인트 ID: <span th:text="${phDetail.id}"></span></p>
-				    <p>포인트 금액: <span th:text="${phDetail.amount}"></span></p>
-				    <p>포인트 타입: <span th:text="${phDetail.type}"></span></p>
-				    <!-- 필요한 속성들을 추가로 출력하거나 포맷팅하여 표시할 수 있습니다 -->
-				</div>
-		</div>
+		<div class="category"></div>
 		<div class="container">
 			<div class="section">
 
@@ -166,7 +192,9 @@
 						</svg>
 								잔여포인트
 							</div>
-							<div class="col-md-3" ></div>point
+							<div class="col-md-3" id="nowPoint" th:text="${#numbers.formatInteger(nowPoint,3,'COMMA')}"></div>
+							
+							point
 						</div>
 
 						<!-- 최소 금액은  -->
@@ -175,10 +203,8 @@
 								<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
 									fill="currentColor" class="bi bi-question-circle"
 									viewBox="0 0 16 16">
-							  <path
-										d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-							  <path
-										d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+							  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+							  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
 							</svg>
 								충전 최소 금액 : 100원
 							</div>
@@ -238,48 +264,27 @@
 
 							</div>
 						</div>
-
-						<!-- 내역시간 금액 -->
+						
+						<!-- 포인트 상세 내역 -->
 						<div class="list" style="margin: 1rem">
+							<div class="row" id="#pointHistoryTable"></div>
 							<div class="row">
-								<div id="date" class="col-2"></div>
-								<div id="status" class="col-8">충전</div>
-								<div id="point" class="col-2">10,000</div>
-							</div>
-							<div class="row">
-								<div class="col-md-8 offset-md-2">18:39</div>
+								<div class="col-md-8 offset-md-2"></div>
 							</div>
 						</div>
-						<div class="list" style="margin: 1rem">
-							<div class="row">
-								<div class="col-2">5.19</div>
-								<div class="col-8">충전</div>
-								<div class="col-2">10,000</div>
+						<div class="list" style="margin: 1rem" th:each="phDetail : ${phDetailList}">
+							<div class="row" >
+								<div class="col-2"
+									th:text="${#temporals.format(phDetail.createdAt, 'MM/dd')}"></div>
+								<div class="col-8" th:text="${phDetail.type == 0 ? '충전' : '사용'}"></div>
+								<div class="col-2" th:text="${#numbers.formatInteger(phDetail.amount,3,'COMMA')}"></div>
 							</div>
 							<div class="row">
-								<div class="col-md-8 offset-md-2">18:39</div>
+								<div th:text="${#temporals.format(phDetail.createdAt, 'HH:mm')}"></div>
+								<!-- <div th:text="${#temporals.format(phDetail.createdAt, 'HH:mm')}"></div> -->
 							</div>
-						</div>
-						<div class="list" style="margin: 1rem">
-							<div class="row">
-								<div class="col-2">5.19</div>
-								<div class="col-8">충전</div>
-								<div class="col-2">10,000</div>
-							</div>
-							<div class="row">
-								<div class="col-md-8 offset-md-2">18:39</div>
-							</div>
-						</div>
-						<div class="list" style="margin: 1rem">
-							<div class="row">
-								<div class="col-2">5.19</div>
-								<div class="col-8">충전</div>
-								<div class="col-2">10,000</div>
-							</div>
-							<div class="row">
-								<div class="col-md-8 offset-md-2">18:39</div>
-							</div>
-						</div>
+						</div>						
+						
 						<!-- 내역시간 금액 end -->
 					</div>
 					<!-- 아래부분 end -->
@@ -288,8 +293,6 @@
 			</div>
 			<!-- section End -->
 		</div>
-		
-
 
 		<div class="footer"></div>
 	</div>

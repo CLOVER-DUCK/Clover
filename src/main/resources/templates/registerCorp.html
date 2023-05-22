@@ -1,175 +1,461 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
-    <link rel="stylesheet" href="../static/css/reset.css" th:href="@{/css/reset.css}">
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-    <title>Title</title>
-    <!-- 	회원가입 - 기업 -->
-    <style>
-        .active {
-            border-color: #0042A0 !important;
-            background: #0042A0 !important;
-            color: #fff !important;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../static/css/common.css"
+	th:href="@{/css/common.css}">
+<link rel="stylesheet" href="../static/css/reset.css"
+	th:href="@{/css/reset.css}">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<title>Title</title>
+<!-- 	회원가입 - 기업 -->
+<style>
+.active {
+	border-color: #0042A0 !important;
+	background: #0042A0 !important;
+	color: #fff !important;
+}
+</style>
 
 </head>
 <body>
-<div>
-    <div class="nav"></div>
-    <div class="container">
-        <section class="section">
-            <article class="container" style="max-width: 30rem">
-                <div class="w-100 mt-5 py-4 my-4">
-                    <h2 class="text-center fw-bold">회원가입</h2>
-                </div>
-                <ul class="nav-tabs row justify-content-start m-0 p-0 text-center fs-5 shadow">
-                    <li class="nav-item col p-0">
-                        <a class="py-3 nav-link " href="#">
-                            투자자 회원
-                        </a>
-                    </li>
-                    <li class="nav-item col p-0">
-                        <a class="py-3 nav-link active" href="#">
-                            기업 회원
-                        </a>
-                    </li>
-                </ul>
-                <form class="p-5 m-auto align-items-start bg-light shadow border-top border-primary border-4 mb-5"
-                      style="border-color: #0042A0 !important;">
-                    <div class="mb-4">
-                        <label for="name">
-                            기업명
-                            <ruby>*</ruby>
-                        </label><input type="text" class="form-control" id="name" placeholder="">
-                    </div>
-                    <div class="mb-4">
-                        <label for="name">
-                            사업자등록번호
-                            <ruby>*</ruby>
-                        </label><input type="text" class="form-control" id="name" placeholder="">
-                    </div>
-                    <div class="mb-4 row">
-                        <label for="sector" class="col-6">
-                            산업 선택
-                            <ruby>*</ruby>
-                        </label>
-                        <label for="logo" class="col-6">
-                            회사 대표 로고 이미지
-                            <ruby>*</ruby>
-                        </label>
-                        <!-- Example single danger button -->
-                        <div class="dropdown col-6">
-                            <input type="text" class="form-control mb-2" id="sector"
-                                   placeholder="">
-                        </div>
-                        <div class="col-6">
-                            <input type="file" class="form-control mb-2" id="logo"
-                                   placeholder="">
-                        </div>
-                    </div>
-                    <div class="mb-4 row">
-                        <div class="row col-12">
-                            <label for="exampleInputPostalcode">주소
-                                <ruby>*</ruby>
-                            </label>
-                            <div class="col-4">
-                                <input type="email" class="form-control mb-2" id="exampleInputPostalcode"
-                                       placeholder="" disabled>
-                            </div>
-                            <button type="submit" class="btn col-3 btn-secondary mb-2">우편번호</button>
-                        </div>
-                        <label for="exampleInputAddress"></label>
-                        <div class="col-12">
-                            <input type="email" class="form-control mb-2" id="exampleInputAddress" placeholder=""
-                                   disabled>
-                        </div>
-                        <label for="exampleInputDeailAdress"></label>
-                        <div class="col-12">
-                            <input type="email" class="form-control mb-2" id="exampleInputDeailAdress" placeholder="">
-                        </div>
-                        <div class="mb-4">
-                            <label for="exampleInputPhone" class="form-label">기업 전화번호
-                                <ruby>*</ruby>
-                            </label>
-                            <input type="tel" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp"
-                                   placeholder="">
-                            <div id="phoneHelp" class="form-text"></div>
-                        </div>
-                        <div class="mb-4">
-                            <label for="exampleInputEmail1" class="form-label">기업 이메일
-                                <ruby>*</ruby>
-                            </label>
-                            <div class="row justify-content-start">
-                                <div class="col-9">
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                           aria-describedby="emailHelp" placeholder="">
-                                </div>
-                                <button type="submit" class="btn btn-primary col-3" style="background: #0042A0">인증 하기
-                                </button>
-                            </div>
-                            <div id="emailHelp" class="form-text">이미 존재하는 이메일입니다.</div>
-                        </div>
-                        <div class="mb-4">
-                            <label for="exampleInputName" class="form-label">담당자 이름
-                                <ruby>*</ruby>
-                            </label>
-                            <input type="text" class="form-control" id="url" aria-describedby="emailHelp"
-                                   placeholder="">
-                        </div>
-                        <div class="mb-4">
-                            <hr>
-                        </div>
-                        <div class="mb-4">
-                            <label for="exampleInputName" class="form-label">담당자 이름
-                                <ruby>*</ruby>
-                            </label>
-                            <input type="email" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
-                                   placeholder="">
-                        </div>
-                        <div class="mb-4">
-                            <label for="exampleInputNickname" class="form-label">아이디
-                                <ruby>*</ruby>
-                            </label>
-                            <input type="email" class="form-control" id="exampleInputNickname"
-                                   placeholder="">
-                        </div>
-                        <div class="mb-4">
-                            <label for="exampleInputPassword1" class="form-label">비밀번호
-                                <ruby>*</ruby>
-                            </label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-                            <div id="passwordHelp" class="form-text">8~16 영문 대,소문자, 숫자, 특수문자를 포함해주세요.</div>
-                        </div>
-                        <div class="mb-4">
-                            <label for="exampleInputPassword2" class="form-label">비밀번호 확인
-                                <ruby>*</ruby>
-                            </label>
-                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="">
-                        </div>
-                    </div>
-                    <div class="mb-2 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">약관 전체동의</label>
-                        <div class="form-text">회원약관 동의(필수), 개인정보처리방침(필수), 개인정보위탁
-                            방침(필수), 사이트이용약관(필수), 만14세이상(필수)
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary my-3 w-100" style="background: #0042A0">회원가입</button>
-                </form>
-            </article>
-        </section>
-    </div>
-    <div class="footer"></div>
-</div>
+	<div>
+		<div class="nav"></div>
+		<div class="container">
+			<section class="section">
+				<article class="container" style="max-width: 30rem">
+					<div class="w-100 mt-5 py-4 my-4">
+						<h2 class="text-center fw-bold">회원가입</h2>
+					</div>
+					<ul
+						class="nav-tabs row justify-content-start m-0 p-0 text-center fs-5 shadow">
+						<li class="nav-item col p-0"><a class="py-3 nav-link "
+							href="/registerInvestor"> 투자자 회원 </a></li>
+						<li class="nav-item col p-0"><a class="py-3 nav-link active">
+								기업 회원 </a></li>
+					</ul>
+					<form action="/registerCorp" method="post"
+						onsubmit="return register()"
+						class="p-5 m-auto align-items-start bg-light shadow border-top border-primary border-4 mb-5"
+						style="border-color: #0042A0 !important;">
+						<!--  -->
+						<div class="mb-4">
+							<label for="name"> 기업명
+								<ruby>*
+								</ruby>
+							</label><input type="text" class="form-control" id="nickname"
+								name="nickname" placeholder="" required autofocus>
+						</div>
+						<div class="mb-4">
+							<label for="name"> 사업자등록번호
+								<ruby>*
+								</ruby>
+							</label><input type="text" class="form-control" id="no"
+								name="no" placeholder="" required autofocus>
+						</div>
+						<!-- 산업 선택 -->
+						<div class="mb-4 row">
+							<label for="sector" class="col-6"> 산업 선택
+								<ruby>*
+								</ruby>
+							</label> <label for="logo" class="col-6"> 회사 대표 로고 이미지
+								<ruby>*
+								</ruby>
+							</label>
+							<!-- Example single danger button -->
+							<div class="dropdown col-6">
+								<input type="text" class="form-control mb-2" id="sector"
+									name="sector" placeholder="" required autofocus>
+							</div>
+							<div class="col-6">
+								<input type="file" class="form-control mb-2" id="logo"
+									placeholder="">
+							</div>
+						</div>
+						<!-- 주소 입력 -->
+						<div class="mb-4 row">
+							<div class="row col-12">
+								<label for="exampleInputPostalcode">주소
+									<ruby>*
+									</ruby>
+								</label>
+								<div class="col-4">
+									<input type="text" class="form-control mb-2"
+										id="sample6_postcode" name="postalCode" placeholder="우편번호"
+										readonly="readonly" required autofocus>
+								</div>
+								<input type="button" class="btn col-4 btn-secondary mb-2"
+									onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+							</div>
 
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+							<label for="exampleInputAddress"></label>
+							<div class="col-12">
+
+								<input type="text" class="form-control mb-2"
+									id="sample6_address" name="address" placeholder="주소" 
+									readonly="readonly" required autofocus>
+							</div>
+
+							<label for="exampleInputDeailAdress"></label>
+							<div class="col-12">
+								<input type="text" class="form-control mb-2"
+									id="sample6_extraAddress" placeholder="참고항목" readonly="readonly">
+							</div>
+							<div class="col-12">
+								<input type="text" class="form-control mb-2"
+									id="sample6_detailAddress" name="detailAddress"
+									placeholder="상세주소" required autofocus>
+							</div>
+
+						</div>
+						<!-- 기업 phone email url -->
+						<div class="mb-4">
+							<label for="exampleInputPhone" class="form-label">기업 전화번호
+								<ruby>*
+								</ruby>
+							</label> <input type="tel" class="form-control" id="exampleInputPhone"
+								aria-describedby="emailHelp" name="phone" placeholder=""
+								required autofocus>
+							<div id="phoneHelp" class="form-text"></div>
+						</div>
+						<div class="mb-4">
+							<label for="exampleInputEmail1" class="form-label">기업 이메일
+								<ruby>*
+								</ruby>
+							</label>
+							<div class="row justify-content-start">
+								<div class="col-9">
+									<input type="email" class="form-control"
+										id="exampleInputEmail1" name="email"
+										aria-describedby="emailHelp" placeholder="" required autofocus>
+								</div>
+								<button type="button" class="btn btn-primary col-3"
+									style="background: #0042A0" onclick="checkEmail()">인증
+									하기</button>
+							</div>
+							<div id="emailHelp" class="form-text"></div>
+
+						</div>
+
+
+						<div class="mb-4">
+							<label for="exampleInputName" class="form-label">기업 공식
+								URL
+								<ruby>*
+								</ruby>
+							</label> <input type="text" class="form-control" id="homepage"
+								name="homepage" aria-describedby="emailHelp" placeholder="" required autofocus>
+						</div>
+						<!-- 구분선 -->
+						<div class="mb-4">
+							<hr>
+						</div>
+						<div class="mb-4">
+							<label for="exampleInputName" class="form-label">담당자 이름
+								<ruby>*
+								</ruby>
+							</label> <input type="text" class="form-control" id="exampleInputName"
+								aria-describedby="emailHelp" name="name" placeholder="" required
+								autofocus>
+						</div>
+						<div class="mb-4">
+							<label for="exampleInputNickname" class="form-label">아이디
+								<ruby>*
+								</ruby>
+							</label> <input type="text" class="form-control" id="exampleUserId"
+								name="userid" placeholder="" required autofocus>
+						</div>
+						<div class="mb-4">
+							<label for="exampleInputPassword1" class="form-label">비밀번호
+								<ruby>*
+								</ruby>
+							</label> <input type="password" class="form-control"
+								id="exampleInputPassword1" name="password" placeholder=""
+								required autofocus>
+							<div id="passwordHelp" class="form-text"></div>
+							<!-- 8~16 영문 대,소문자, 숫자, 특수문자를 포함해주세요. -->
+						</div>
+						<div class="mb-4">
+							<label for="exampleInputPassword2" class="form-label">비밀번호
+								확인
+								<ruby>*
+								</ruby>
+							</label> <input type="password" class="form-control"
+								id="exampleInputPassword2" onblur="validatePassword()"
+								name="password2" placeholder="" required autofocus>
+							<div id="passwordHelp2" class="form-text"></div>
+						</div>
+
+						<!-- 동의 체크박스 -->
+						<div class="mb-2 form-check">
+							<p id="checkboxError"></p>
+							<input type="checkbox" class="form-check-input"
+								id="exampleCheck1" required> <label
+								class="form-check-label" for="exampleCheck1">약관 전체동의</label>
+							<div class="form-text">회원약관 동의(필수), 개인정보처리방침(필수), 개인정보위탁
+								방침(필수), 사이트이용약관(필수), 만14세이상(필수)</div>
+						</div>
+						<button type="submit" id="registerButton"
+							class="btn btn-primary my-3 w-100" style="background: #0042A0"
+							onclick="register(event)">회원가입</button>
+						<!--  -->
+					</form>
+				</article>
+			</section>
+		</div>
+		<div class="footer"></div>
+	</div>
+
+	<script>
+		function checkEmail() {
+
+			var emailInput = document.getElementById("exampleInputEmail1");
+			var emailHelp = document.getElementById("emailHelp");
+			var registerButton = document.getElementById("registerButton");
+			var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+			// 이메일 형식 검사
+			if (!emailPattern.test(emailInput.value)) {
+				emailHelp.innerText = "이메일 형식으로 입력하세요.";
+				emailHelp.style.color = "red";
+				registerButton.disabled = true; // 회원가입 버튼 비활성화
+				return;
+			}
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "/checkEmail?email=" + emailInput.value, true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === XMLHttpRequest.DONE) {
+					if (xhr.status === 200) {
+						var response = JSON.parse(xhr.responseText);
+						if (response.exists) {
+							emailHelp.innerText = "이미 존재하는 이메일입니다.";
+							emailHelp.style.color = "red";
+							registerButton.disabled = true; // 회원가입 버튼 비활성화
+						} else {
+							emailHelp.innerText = "이메일 사용 가능합니다.";
+							emailHelp.style.color = "green";
+							registerButton.disabled = false; // 회원가입 버튼 활성화
+						}
+					} else {
+						console.log("오류 발생: " + xhr.status);
+						registerButton.disabled = true; // 회원가입 버튼 비활성화
+					}
+				}
+			};
+			xhr.send();
+		}
+	</script>
+
+	<script>
+		function validatePassword() {
+			var passwordInput = document
+					.getElementById("exampleInputPassword1");
+			var passwordConfirmInput = document
+					.getElementById("exampleInputPassword2");
+			var passwordHelp = document.getElementById("passwordHelp");
+			var passwordConfirmHelp = document.getElementById("passwordHelp2");
+
+			var password = passwordInput.value;
+			var passwordConfirm = passwordConfirmInput.value;
+
+			// 비밀번호 유효성 체크
+			if (!isValidPassword(password)) {
+				passwordHelp.innerText = "8~16 영문 대,소문자, 숫자, 특수문자를 포함해주세요.";
+				passwordHelp.style.color = "red";
+			} else {
+				passwordHelp.innerText = ""; // 비밀번호 유효성이 만족되면 메시지를 비웁니다.
+				passwordHelp.style.color = "green";
+			}
+
+			// 비밀번호 확인 체크
+			if (password !== "") {
+				if (password === passwordConfirm) {
+					passwordConfirmHelp.innerText = "비밀번호가 일치합니다.";
+					passwordConfirmHelp.style.color = "green";
+				} else {
+					passwordConfirmHelp.innerText = "비밀번호가 일치하지 않습니다.";
+					passwordConfirmHelp.style.color = "red";
+				}
+			} else {
+				passwordConfirmHelp.innerText = ""; // 입력값이 없을 때 메시지를 비웁니다.
+				passwordConfirmHelp.style.color = "red";
+			}
+		}
+
+		function isValidPassword(password) {
+			// 비밀번호 유효성 체크 로직을 여기에 작성
+			// 예시: 8~16 글자 수, 영문 대소문자, 숫자, 특수문자 포함 등의 조건을 확인하여 유효성을 판단
+			// 유효한 경우 true 반환, 그렇지 않은 경우 false 반환
+			var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
+			return passwordPattern.test(password);
+		}
+
+		document.addEventListener("DOMContentLoaded", function() {
+			var passwordInput = document
+					.getElementById("exampleInputPassword1");
+			var passwordConfirmInput = document
+					.getElementById("exampleInputPassword2");
+
+			passwordInput.addEventListener("input", validatePassword);
+			passwordConfirmInput.addEventListener("input", validatePassword);
+		});
+	</script>
+	<script>
+		function register(event) {
+			// 		window.onload() = function(){
+			var check = 0;
+			var emailHelp = document.getElementById("emailHelp");
+			var emailInput = document.getElementById("exampleInputEmail1");
+			var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+			var passwordInput = document.getElementById("exampleInputPassword1");
+			var passwordConfirmInput = document
+					.getElementById("exampleInputPassword2");
+			var passwordConfirmHelp = document.getElementById("passwordHelp2");
+			var passwordConfirmHelp1 = document.getElementById("passwordHelp");
+		
+			var password = passwordInput.value;
+			var passwordConfirm = passwordConfirmInput.value;
+			
+			var checkbox = document.getElementById("exampleCheck1");
+			var errorText = document.getElementById("checkboxError");
+			var postalCode = document.getElementById("sample6_postcode").value;
+			var address = document.getElementById("sample6_address").value;
+
+			if (postalCode.trim() === "" || address.trim() === "") {
+				event.preventDefault(); // 폼 제출 막기
+				alert("우편번호 찾기를 해주세요.");
+				return false;
+			} else {
+				check++;
+			}
+			
+			if (emailHelp.style.color !== "green") {
+				// 이메일이 사용 가능하지 않은 경우
+				event.preventDefault();
+				alert("이메일을 중복체크해주세요.");
+				return false;
+			} else {
+				check++;
+			}
+
+			
+			console.log(password + " 출력 ");
+			console.log(passwordPattern.test(password) + " 출력2 ");
+			console.log(passwordConfirmHelp1.style.color + " 출력3 ");
+
+			if (passwordConfirmHelp1.style.color != "green") {
+				event.preventDefault();
+				alert("비밀번호는 최소 8자 이상이어야 하며, 숫자, 영문 대문자, 영문 소문자를 모두 포함해야 합니다.");
+				return false;
+			} else {
+				check++;
+			}
+
+			if (password !== passwordConfirm) {
+				passwordConfirmHelp.innerText = "비밀번호가 같지 않습니다.";
+				passwordConfirmHelp.style.color = "red";
+				event.preventDefault(); // 폼 제출 막기
+				alert("비밀번호가 서로 다릅니다.");
+				return false; // 폼 제출 막기
+			} else {
+				check++;
+			}
+
+			
+			if (!checkbox.checked) {
+				errorText.innerText = "동의해야 회원가입 가능합니다.";
+				errorText.style.color = "red";
+				alert("동의해야 회원가입 가능합니다.")
+				event.preventDefault(); // 폼 제출 막기
+				return false; // 폼 제출 막기
+			} else {
+				errorText.innerText = "";
+				check++;
+			}
+			
+		
+			if (check == 5) {
+				// 회원가입 처리 로직
+				var registerForm = document.getElementById("registerForm");
+				registerForm.submit();
+			} else {
+				console.log(check + "개 완료");
+				return false;
+			}
+
+			// 		} 
+
+		}
+	</script>
+
+
+
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		function sample6_execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var addr = ''; // 주소 변수
+							var extraAddr = ''; // 참고항목 변수
+
+							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+								addr = data.roadAddress;
+							} else { // 사용자가 지번 주소를 선택했을 경우(J)
+								addr = data.jibunAddress;
+							}
+
+							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+							if (data.userSelectedType === 'R') {
+								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+								if (data.bname !== ''
+										&& /[동|로|가]$/g.test(data.bname)) {
+									extraAddr += data.bname;
+								}
+								// 건물명이 있고, 공동주택일 경우 추가한다.
+								if (data.buildingName !== ''
+										&& data.apartment === 'Y') {
+									extraAddr += (extraAddr !== '' ? ', '
+											+ data.buildingName
+											: data.buildingName);
+								}
+								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+								if (extraAddr !== '') {
+									extraAddr = ' (' + extraAddr + ')';
+								}
+								// 조합된 참고항목을 해당 필드에 넣는다.
+								document.getElementById("sample6_extraAddress").value = extraAddr;
+
+							} else {
+								document.getElementById("sample6_extraAddress").value = '';
+							}
+
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById('sample6_postcode').value = data.zonecode;
+							document.getElementById("sample6_address").value = addr;
+							// 커서를 상세주소 필드로 이동한다.
+							document.getElementById("sample6_detailAddress")
+									.focus();
+						}
+					}).open();
+		}
+	</script>
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 
 </body>
 </html>
