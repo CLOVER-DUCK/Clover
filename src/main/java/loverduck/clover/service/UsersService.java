@@ -1,5 +1,8 @@
 package loverduck.clover.service;
 
+import java.util.List;
+
+import loverduck.clover.entity.Ordered;
 import loverduck.clover.entity.UserDetail;
 import loverduck.clover.entity.Users;
 
@@ -27,7 +30,12 @@ public interface UsersService {
 	 * @param email
 	 * @return
 	 */
-	boolean checkEmailExists(String email);
+	boolean checkEmailExists(String email);	
 	
+	/**
+	 * 마이페이지 투자한 펀딩 목록 출력 
+	 */
+	List<Ordered> findOrderdByUser(Long id);
 
+	
 }
